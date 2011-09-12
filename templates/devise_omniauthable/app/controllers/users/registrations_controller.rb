@@ -22,7 +22,7 @@ private
   def build_resource(*args)  
     super  
     if session[:omniauth]
-      @user.name = session[:omniauth]['user_info']['name']
+      @user.username = session[:omniauth]['user_info']['nickname']
       @user.apply_omniauth(session[:omniauth])  
       @user.valid?  
     end  
