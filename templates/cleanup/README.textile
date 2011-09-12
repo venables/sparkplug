@@ -1,0 +1,23 @@
+h1. AppName
+
+One-line description of the app here.
+
+h2. More Information
+
+More detailed description here.
+
+h2. Installation
+
+    bundle install
+
+h2. Issues
+
+None.
+
+h2. Credits
+
+First committer here.
+
+h2. Legal
+
+Copyright (c) 2011 CompanyName

@@ -1,0 +1,1 @@
+copy_template "app/helpers/layout_helper.rb"
