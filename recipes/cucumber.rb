@@ -30,4 +30,8 @@ after_bundler do
   # Paths
   remove_file 'features/support/paths.rb'
   copy_template "features/support/paths.rb"
+  
+  inject_into_file "lib/tasks/cucumber.rake", :after => /t.profile = 'default'/ do
+    "\n      t.cucumber_opts = '--format progress'"
+  end
 end
