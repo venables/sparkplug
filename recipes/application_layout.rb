@@ -30,10 +30,6 @@ after_bundler do
     get "https://raw.github.com/paulirish/html5-boilerplate/master/#{asset}", "public/#{asset}"
   end
 
-  # ERB version of default application layout
-  copy_template "app/views/devise/menu/_login_items.html.erb"
-  copy_template"app/views/devise/menu/_registration_items.html.erb"
-
   copy_template "app/views/layouts/application.html.erb", :force => true
   gsub_file "app/views/layouts/application.html.erb", /AppName/, @app_name
 end

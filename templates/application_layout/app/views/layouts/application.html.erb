@@ -25,8 +25,13 @@
       <nav>
         <ul>
           <li><%= link_to Settings.site_name, root_url %></li>
-          <%= render 'devise/menu/registration_items' %>
-          <%= render 'devise/menu/login_items' %>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Edit account', edit_user_registration_path  %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path %></li>
+          <% else %>
+            <li><%= link_to 'Sign up', new_user_registration_path  %></li>
+            <li><%= link_to 'Login', new_user_session_path %></li>
+          <% end %>
         </ul>
       </nav>
     </header>
