@@ -11,6 +11,10 @@ Given /^there are (\d+) (.+)$/ do |n, model_str|
   end
 end
 
+Given /^I have no ([^"]*)$/ do |model_str|
+  Given %{there are 0 #{model_str}}
+end
+
 # Given the following users exist:
 Given /^the following ([^"]*) exist:$/ do |model_str, table|
   model_str = model_str.gsub(/\s/, '_').singularize
@@ -24,4 +28,8 @@ end
 # Then there should be 3 users
 Then /^there should be (\d+) (.+)$/ do |num, model_str|
   model_str.gsub(/\s/, '_').singularize.classify.constantize.count.should == num.to_i
+end
+
+Then /^I should have (\d+) (.+)$/ do |num, model_str|
+  Then %{there should be #{num} #{model_str}}
 end

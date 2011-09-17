@@ -9,16 +9,13 @@
   rspec
   cucumber
   action_mailer
-  devise
-  add_user
-  users_page
-  devise_omniauthable
+  homepage
+  sorcery
   app_helpers
   pagination
   rails_config
   application_layout
   css_setup
-  homepage
   git
   friendly_errors
   friendly_id
