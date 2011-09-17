@@ -1,7 +1,3 @@
-# Sparkplug.
-# (modified from RailsWizard)
-#
-
 @recipes = %w(
   rvm
   cleanup
@@ -22,6 +18,9 @@
   friendly_id
   pow
 )
+
+
+############## Don't go lower.
 
 def recipes_dir
   File.dirname(__FILE__) + "/recipes"
