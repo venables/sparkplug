@@ -5,11 +5,9 @@ after_everything do
   # Initialize new Git repo
   git :init
   git :add => '.'
-  git :commit => "-aqm 'Create #{@app_name} app"
+  git :commit => "-aqm 'Create #{@app_name} app'"
   
-  # Create a git branch
+  # Create a git branches
+  git :checkout => ' -b staging'
   git :checkout => ' -b working'
-  git :add => '.'
-  git :commit => "-m 'Initial commit of working branch'"
-  git :checkout => 'master'
 end
