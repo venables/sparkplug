@@ -26,7 +26,7 @@ after_bundler do
   # Users
   generate "controller Users"
   copy_template "app/controllers/users_controller.rb", :force => true
-  %w( new edit ).each { |v| copy_template "app/views/users/#{v}.html.erb" }
+  %w( new edit show ).each { |v| copy_template "app/views/users/#{v}.html.erb" }
   
   # Sessions
   generate "controller Sessions"
@@ -42,5 +42,25 @@ after_bundler do
   inject_into_file 'config/routes.rb', :after => /routes.draw do/ do
     "\n  " + contents_of_file(template_path("routes.rb"))
   end
+  
+  # RSpec tests
+  copy_template "spec/models/user_spec.rb", :force => true
+  copy_template "spec/factories/user.rb", :force => true
+  
+  # Cucumber features
+  %w(user_authenticates user_registers user_signs_out).each do |f|
+    copy_template "features/scenarios/authentication/#{f}.feature", :force => true
+  end
+  
+  %w(edit show).each do |f|
+    copy_template "features/scenarios/users/#{f}.feature", :force => true
+  end
+  
+  %w(authentication_steps user_steps).each do |f|
+    copy_template "features/step_definitions/#{f}.rb", :force => true
+  end
+
+  copy_template "features/support/paths.rb", :force => true
+
   
 end

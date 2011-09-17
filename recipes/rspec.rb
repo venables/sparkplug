@@ -17,7 +17,4 @@ after_bundler do
   # remove either possible occurrence of "require rails/test_unit/railtie"
   gsub_file 'config/application.rb', /require 'rails\/test_unit\/railtie'/, '# require "rails/test_unit/railtie"'
   gsub_file 'config/application.rb', /require "rails\/test_unit\/railtie"/, '# require "rails/test_unit/railtie"'
-
-  # Add devise helpers
-  copy_template "spec/support/devise.rb"
 end

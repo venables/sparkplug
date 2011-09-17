@@ -9,28 +9,8 @@ after_bundler do
   say_wizard "Cucumber recipe running 'after bundler'"
   generate "cucumber:install --capybara --rspec"
 
-  say_wizard "Copying Cucumber scenarios from the rails3-devise-rspec-cucumber examples"
-  # copy all the Cucumber scenario files from the rails3-devise-rspec-cucumber example app
-  
-  
-  %w(user_authenticates user_registers user_signs_out).each do |f|
-    copy_template "features/scenarios/authentication/#{f}.feature"
-  end
-  
-  %w(edit show).each do |f|
-    copy_template "features/scenarios/users/#{f}.feature"
-  end
-  
+  copy_template "features/step_definitions/global_steps.rb"
 
-  # Step Definitions
-  %w(authentication_steps global_steps user_steps).each do |f|
-    copy_template "features/step_definitions/#{f}.rb"
-  end
-  
-  # Paths
-  remove_file 'features/support/paths.rb'
-  copy_template "features/support/paths.rb"
-  
   inject_into_file "lib/tasks/cucumber.rake", :after => /t.profile = 'default'/ do
     "\n      t.cucumber_opts = '--format progress'"
   end

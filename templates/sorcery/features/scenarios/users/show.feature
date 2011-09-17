@@ -5,19 +5,19 @@ Feature: Show user page
   
   Scenario: User can be seen by authenticated users
     Given the following users exist:
-      | name    | email         |
+      | username| email         |
       | matt    | matt@test.com |
       | joe     | joe@test.com  |
-    And I am logged in as "matt@test.com"
-    When I am on the user detail page for "joe@test.com"
-    Then I should see "User: joe"
+    And I am logged in as "matt"
+    When I am on the user detail page for "joe"
+    Then I should see "joe" within "h1"
     And I should see "Email: joe@test.com"
       
   Scenario: User can not be seen by non-authenticated users
     Given the following users exist:
-      | name    | email         |
+      | username| email         |
       | matt    | matt@test.com |
       | joe     | joe@test.com  |
     And I am not logged in
-    When I am on the user detail page for "joe@test.com"
-    Then I should be required to sign in
+    When I am on the user detail page for "joe"
+    Then I should be required to login

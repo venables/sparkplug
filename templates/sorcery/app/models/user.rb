@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery!
   
   validates :username,  :presence => true, :uniqueness => true
-  validates :email,     :presence => true, :uniqueness => true  
-  validates_confirmation_of :password, :on => :create, :message => "should match confirmation"
+  validates :email,     :presence => true, :uniqueness => true, :email => true
+  validates :password,  :presence => true, :length => { :minimum => 6 }, :confirmation => { :message => "should match confirmation" }, :on => :create
 end

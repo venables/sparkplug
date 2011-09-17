@@ -1,1 +1,0 @@
-resources :users, :only => [:index, :show]

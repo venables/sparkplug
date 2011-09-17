@@ -14,19 +14,21 @@ module NavigationHelpers
     # Authentication
     
     when /the sign up page/
-      '/users/sign_up'
+      '/signup'
 
-    when /the sign in page/
-      '/users/sign_in'
-      
-    when /the edit user page/
-      '/users/edit'
+    when /the login page/
+      '/login'
     
+    when /the logout page/
+      '/logout'
+      
     # Users
     
     when /the user detail page for "(.*)"$/
-      "/users/#{User.find_by_email($1).to_param}"
-      
+      "/users/#{User.find_by_username($1).to_param}"
+    
+    when /the edit user page for "(.*)"$/
+      "/users/#{User.find_by_username($1).to_param}/edit"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
