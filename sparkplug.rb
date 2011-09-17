@@ -8,6 +8,7 @@
   database_renamer
   rspec
   cucumber
+  coverage
   action_mailer
   homepage
   sorcery
