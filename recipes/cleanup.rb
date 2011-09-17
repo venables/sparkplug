@@ -16,5 +16,5 @@ after_bundler do
   gsub_file "README.textile", /AppName/, "#{app_name.humanize.titleize}"
   
   inject_into_file "config/application.rb", 'config.autoload_paths += %W(#{config.root}/lib) ', :before => /# config.autoload_paths/ 
-  compy_template "lib/email_validator.rb"
+  copy_template "lib/email_validator.rb"
 end
