@@ -1,6 +1,7 @@
 @recipes = %w(
   rvm
   cleanup
+  mongoid
   database_renamer
   rspec
   cucumber
@@ -16,7 +17,7 @@
   git
   friendly_errors
   friendly_id
-  pow
+  procfile
 )
 
 

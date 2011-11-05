@@ -1,5 +1,4 @@
 after_everything do
-  
   say_wizard "Git recipe running 'after everything'"
   
   # Initialize new Git repo

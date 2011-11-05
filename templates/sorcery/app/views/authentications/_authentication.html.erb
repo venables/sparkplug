@@ -1,0 +1,6 @@
+<li id="authentication-<%= authentication.id %>" id="authentication">
+  <%= authentication.provider %>
+  <% if authentication.can_be_destroyed? %>
+    <%= link_to "X", authentication, :method => :delete, :confirm => "Are you sure?" %>
+  <% end %>
+</li>

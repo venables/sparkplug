@@ -1,12 +1,9 @@
-# Application template recipe for the rails_apps_composer. Check for a newer version here:
-# https://github.com/RailsApps/rails_apps_composer/blob/master/recipes/html5.rb
-
 after_bundler do
   say_wizard "HTML5 Boilerplate recipe running 'after bundler'"
   
   # Download HTML5 Boilerplate JavaScripts
   %w( modernizr-2.0.6.min.js ).each do |js_lib|
-    get "https://raw.github.com/paulirish/html5-boilerplate/master/js/libs/#{js_lib}", "app/assets/javascripts/modernizr.js"
+    get "https://raw.github.com/h5bp/html5-boilerplate/master/js/libs/#{js_lib}", "app/assets/javascripts/modernizr.js"
   end
   
   # Download app skeleton
@@ -27,7 +24,7 @@ after_bundler do
     crossdomain.xml
     humans.txt
   ).each do |asset|
-    get "https://raw.github.com/paulirish/html5-boilerplate/master/#{asset}", "public/#{asset}"
+    get "https://raw.github.com/h5bp/html5-boilerplate/master/#{asset}", "public/#{asset}"
   end
 
   copy_template "app/views/layouts/application.html.erb", :force => true

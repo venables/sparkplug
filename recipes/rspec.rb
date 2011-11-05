@@ -17,4 +17,16 @@ after_bundler do
   # remove either possible occurrence of "require rails/test_unit/railtie"
   gsub_file 'config/application.rb', /require 'rails\/test_unit\/railtie'/, '# require "rails/test_unit/railtie"'
   gsub_file 'config/application.rb', /require "rails\/test_unit\/railtie"/, '# require "rails/test_unit/railtie"'
+
+  if @use_mongo
+    inject_into_file "spec/spec_helper.rb", :after => /RSpec.configure do |config|/ do
+      "\n  config.before(:suite) { DatabaseCleaner.strategy = :truncation }" + 
+      "\n  config.before(:each)  { DatabaseCleaner.start }" + 
+      "\n  config.after(:each)   { DatabaseCleaner.clean }"
+    end
+
+    gsub_file "spec/spec_helper.rb", /config.fixture_path/, "# config.fixture_path"
+    gsub_file "spec/spec_helper.rb", /config.use_transactional_fixtures/, "# config.use_transactional_fixtures"
+  end
+
 end

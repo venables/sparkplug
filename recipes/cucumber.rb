@@ -14,4 +14,8 @@ after_bundler do
   inject_into_file "lib/tasks/cucumber.rake", :after => /t.profile = 'default'/ do
     "\n      t.cucumber_opts = '--format progress'"
   end
+  
+  if @use_mongo
+    gsub_file "features/support/env.rb", /DatabaseCleaner.strategy = :transaction/, "DatabaseCleaner.strategy = :truncation"
+  end
 end
